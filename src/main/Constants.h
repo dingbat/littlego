@@ -1123,6 +1123,7 @@ extern NSString* moveNumbersPercentageKey;
 extern NSString* playSoundKey;
 extern NSString* vibrateKey;
 extern NSString* infoTypeLastSelectedKey;
+extern NSString* boardThemeIdKey;
 // New game settings
 extern NSString* newGameKey;
 extern NSString* gameTypeKey;

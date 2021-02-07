@@ -42,5 +42,6 @@
 /// This property does not store a user preference, it stores a part of the
 /// current application state.
 @property(nonatomic, assign) bool boardViewDisplaysCrossHair;
+@property(nonatomic, assign) NSString* boardThemeId;
 
 @end

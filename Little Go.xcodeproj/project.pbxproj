@@ -22,6 +22,9 @@
 
 /* Begin PBXBuildFile section */
 		19BC6071EDF78D418FF44E38 /* libPods-All Targets-Little Go.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EFA40757AA3D18B0C541BBC3 /* libPods-All Targets-Little Go.a */; };
+		37CDF89D25D0977300BCEF10 /* BoardTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 37CDF89C25D0977300BCEF10 /* BoardTheme.m */; };
+		37CDF8B425D09D4000BCEF10 /* BoardTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 37CDF89C25D0977300BCEF10 /* BoardTheme.m */; };
+		37CDF8B925D09D4100BCEF10 /* BoardTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 37CDF89C25D0977300BCEF10 /* BoardTheme.m */; };
 		CD00A34E1487F9CF004E1A0C /* MANUAL in Resources */ = {isa = PBXBuildFile; fileRef = CD00A34D1487F9CF004E1A0C /* MANUAL */; };
 		CD00A363148C2C26004E1A0C /* ApplicationDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = CD00A358148C2C26004E1A0C /* ApplicationDelegate.mm */; };
 		CD00A364148C2C26004E1A0C /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = CD00A35A148C2C26004E1A0C /* Constants.m */; };
@@ -633,6 +636,8 @@
 
 /* Begin PBXFileReference section */
 		1D6058910D05DD3D006BFB54 /* Little Go.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Little Go.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		37CDF89B25D0977300BCEF10 /* BoardTheme.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BoardTheme.h; sourceTree = "<group>"; };
+		37CDF89C25D0977300BCEF10 /* BoardTheme.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BoardTheme.m; sourceTree = "<group>"; };
 		5EF15C963D408E9DCB73E098 /* Pods-All Targets-Unit tests.distribute_appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-All Targets-Unit tests.distribute_appstore.xcconfig"; path = "Pods/Target Support Files/Pods-All Targets-Unit tests/Pods-All Targets-Unit tests.distribute_appstore.xcconfig"; sourceTree = "<group>"; };
 		7BB5815F5E765A57F1FEB04D /* libPods-All Targets-Unit tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-All Targets-Unit tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		88F44D38B400A752F557FD4D /* Pods-All Targets-Unit tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-All Targets-Unit tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-All Targets-Unit tests/Pods-All Targets-Unit tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -1695,6 +1700,8 @@
 				CD1F4F7F25AE90F90098037A /* SgfSyntaxCheckingLevelSettingsController.m */,
 				CDE6C547183D820300186E89 /* SoundSettingsController.h */,
 				CDE6C548183D820300186E89 /* SoundSettingsController.m */,
+				37CDF89B25D0977300BCEF10 /* BoardTheme.h */,
+				37CDF89C25D0977300BCEF10 /* BoardTheme.m */,
 			);
 			path = settings;
 			sourceTree = "<group>";
@@ -3055,6 +3062,7 @@
 				CDD48C90141036D200188B6A /* ArchiveViewModel.m in Sources */,
 				CDD48FB01413E95500188B6A /* CommandBase.m in Sources */,
 				CDD48FC01414038000188B6A /* CommandProcessor.m in Sources */,
+				37CDF89D25D0977300BCEF10 /* BoardTheme.m in Sources */,
 				CD7C57D422024C4700694520 /* BoardSetupSettingsController.m in Sources */,
 				CD7C69FD1AB43B3F009EC5AD /* NavigationBarController.m in Sources */,
 				CDFABB881416DD880065C93B /* ArchiveGame.m in Sources */,
@@ -3252,6 +3260,7 @@
 				CD85B5981401C1B7001715B8 /* GoMove.m in Sources */,
 				CDAFAE2A195DB6B800EF84A9 /* CoordinateLabelsTileView.m in Sources */,
 				CDFD9F7E18F1D5DF0031CBCF /* CrashReportingSettingsController.m in Sources */,
+				37CDF8B425D09D4000BCEF10 /* BoardTheme.m in Sources */,
 				CDEECC6D1992923000BC89F2 /* ArchiveUtility.m in Sources */,
 				CD85B59E1401C1D7001715B8 /* GoBoardRegion.m in Sources */,
 				CD7C578321F4A3A900694520 /* UnarchiveGameCommand.m in Sources */,
@@ -3473,6 +3482,7 @@
 				CDB49E36220F4045006DC1A4 /* LayoutManager.m in Sources */,
 				CDB49E32220DF90D006DC1A4 /* Constants.m in Sources */,
 				CDB49E35220EDAF6006DC1A4 /* UiTestDeviceInfo.m in Sources */,
+				37CDF8B925D09D4100BCEF10 /* BoardTheme.m in Sources */,
 				CDB49E3E2220AFE5006DC1A4 /* AccessibilityUtility.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -22,18 +22,19 @@
 #import "../play/model/BoardViewModel.h"
 #import "../ui/TableViewCellFactory.h"
 #import "../ui/TableViewSliderCell.h"
+#import "./BoardTheme.h"
 
 // Constants
 static const float sliderValueFactorForMoveNumbersPercentage = 100.0;
 NSString* displayPlayerInfluenceText = @"Display player influence";
-
 
 // -----------------------------------------------------------------------------
 /// @brief Enumerates the sections presented in the "Display" user preferences
 /// table view.
 // -----------------------------------------------------------------------------
 enum DisplayTableViewSection
-{
+{ 
+  BoardThemeSection,
   ViewSection,
   DisplayMoveNumbersSection,
   DisplayPlayerInfluenceSection,
@@ -135,6 +136,8 @@ enum DisplayPlayerInfluenceSectionItem
 {
   switch (section)
   {
+    case BoardThemeSection:
+      return [BoardTheme boardThemes].count;
     case ViewSection:
       return MaxViewSectionItem;
     case DisplayMoveNumbersSection:
@@ -170,11 +173,34 @@ enum DisplayPlayerInfluenceSectionItem
 // -----------------------------------------------------------------------------
 /// @brief UITableViewDataSource protocol method.
 // -----------------------------------------------------------------------------
+- (NSString*) tableView:(UITableView*)tableView titleForHeaderInSection:(NSInteger)section
+{
+  switch (section)
+  {
+    case BoardThemeSection:
+      return @"Board Theme";
+    default:
+      break;
+  }
+  return nil;
+}
+
+// -----------------------------------------------------------------------------
+/// @brief UITableViewDataSource protocol method.
+// -----------------------------------------------------------------------------
 - (UITableViewCell*) tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
 {
   UITableViewCell* cell = nil;
   switch (indexPath.section)
   {
+    case BoardThemeSection:
+    {
+      BoardTheme* theme = [[BoardTheme boardThemes] objectAtIndex:indexPath.row];
+      cell = [TableViewCellFactory cellWithType:DefaultCellType tableView:tableView];
+      cell.textLabel.text = theme.name;
+      cell.accessoryType = theme.themeId == self.boardViewModel.boardThemeId ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
+      break;
+    }
     case ViewSection:
     {
       switch (indexPath.row)
@@ -261,7 +287,20 @@ enum DisplayPlayerInfluenceSectionItem
 // -----------------------------------------------------------------------------
 - (void) tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath
 {
-  [tableView deselectRowAtIndexPath:indexPath animated:NO];
+  switch (indexPath.section)
+  {
+    case BoardThemeSection:
+    {
+      self.boardViewModel.boardThemeId = [[BoardTheme boardThemes] objectAtIndex:indexPath.row].themeId;
+      [tableView deselectRowAtIndexPath:indexPath animated:YES];
+      [tableView reloadSections:[NSIndexSet indexSetWithIndex:BoardThemeSection] withRowAnimation:UITableViewRowAnimationAutomatic];
+      break;
+    }
+    default: {
+      [tableView deselectRowAtIndexPath:indexPath animated:NO];
+      break;
+    }
+  }
 }
 
 #pragma mark - Action handlers

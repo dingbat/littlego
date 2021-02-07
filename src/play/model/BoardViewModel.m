@@ -18,7 +18,7 @@
 // Project includes
 #import "BoardViewModel.h"
 #import "../../utility/NSStringAdditions.h"
-
+#import "../../settings/BoardTheme.h"
 
 @implementation BoardViewModel
 
@@ -41,12 +41,13 @@
   self.vibrate = false;
   self.infoTypeLastSelected = ScoreInfoType;
   self.boardViewDisplaysCrossHair = false;
+  self.boardThemeId = [[BoardTheme boardThemes] objectAtIndex:0].themeId;
   return self;
 }
 
 // -----------------------------------------------------------------------------
 /// @brief Initializes default values in this model with user defaults data.
-// -----------------------------------------------------------------------------
+// -----------------------------------------------------  ------------------------
 - (void) readUserDefaults
 {
   NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
@@ -58,6 +59,9 @@
   self.playSound = [[dictionary valueForKey:playSoundKey] boolValue];
   self.vibrate = [[dictionary valueForKey:vibrateKey] boolValue];
   self.infoTypeLastSelected = [[dictionary valueForKey:infoTypeLastSelectedKey] intValue];
+  if ([dictionary objectForKey:boardThemeIdKey]) {
+    self.boardThemeId = [dictionary objectForKey:boardThemeIdKey];
+  }
 }
 
 // -----------------------------------------------------------------------------
@@ -82,6 +86,7 @@
   [dictionary setValue:[NSNumber numberWithBool:self.playSound] forKey:playSoundKey];
   [dictionary setValue:[NSNumber numberWithBool:self.vibrate] forKey:vibrateKey];
   [dictionary setValue:[NSNumber numberWithInt:self.infoTypeLastSelected] forKey:infoTypeLastSelectedKey];
+  [dictionary setValue:self.boardThemeId forKey:boardThemeIdKey];
   // Note: NSUserDefaults takes care entirely by itself of writing only changed
   // values.
   [userDefaults setObject:dictionary forKey:boardViewKey];
