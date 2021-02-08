@@ -57,5 +57,4 @@
 + (NSArray*) redButtonTableViewCellSelectedBackgroundGradientColors;
 + (UIColor*) tableViewCellDetailTextLabelColor;
 + (UIColor*) navigationbarBackgroundColor;
-+ (UIColor*) woodenBackgroundColor;
 @end

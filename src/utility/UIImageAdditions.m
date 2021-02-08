@@ -206,20 +206,4 @@
   return tiledImage;
 }
 
-// -----------------------------------------------------------------------------
-/// @brief Returns an image object that can be used to display a wooden
-/// background. The image is suitable for tiling.
-// -----------------------------------------------------------------------------
-+ (UIImage*) woodenBackgroundTileImage
-{
-  // The background image is quite large, so we don't use UIImage namedImage:()
-  // because that method caches the image in the background. We don't need
-  // caching because we only load the image once, so not using namedImage:()
-  // saves us quite a bit of valuable memory.
-  NSString* imagePath = [[NSBundle mainBundle] pathForResource:woodenBackgroundImageResource
-                                                        ofType:nil];
-  NSData* imageData = [NSData dataWithContentsOfFile:imagePath];
-  return [UIImage imageWithData:imageData];
-}
-
 @end

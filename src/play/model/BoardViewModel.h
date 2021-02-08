@@ -14,7 +14,6 @@
 // limitations under the License.
 // -----------------------------------------------------------------------------
 
-
 // -----------------------------------------------------------------------------
 /// @brief The BoardViewModel class provides user defaults data to its clients
 /// related to normal play.

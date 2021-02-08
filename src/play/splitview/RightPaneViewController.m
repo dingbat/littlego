@@ -30,6 +30,9 @@
 #import "../../ui/ButtonBoxController.h"
 #import "../../ui/UiElementMetrics.h"
 #import "../../utility/UIColorAdditions.h"
+#import "../../main/ApplicationDelegate.h"
+#import "../model/BoardViewModel.h"
+#import "../../settings/BoardTheme.h"
 
 
 // -----------------------------------------------------------------------------
@@ -440,7 +443,8 @@
 {
   // This view provides a wooden texture background not only for the Go board,
   // but for the entire area in which the Go board resides
-  self.woodenBackgroundView.backgroundColor = [UIColor woodenBackgroundColor];
+  NSString* boardThemeId = [ApplicationDelegate sharedDelegate].boardViewModel.boardThemeId;
+  self.woodenBackgroundView.backgroundColor = [BoardTheme themeForId:boardThemeId].boardBackgroundColor;
 
   [self.boardPositionButtonBoxController applyTransparentStyle];
   [self.gameActionButtonBoxController applyTransparentStyle];

@@ -31,6 +31,5 @@
 + (UIImage*) paddedImageWithSize:(CGSize)size originalImage:(UIImage*)originalImage;
 + (UIImage*) paddedImageWithSize:(CGSize)size tintedFor:(UIUserInterfaceStyle)userInterfaceStyle originalImage:(UIImage*)originalImage API_AVAILABLE(ios(13.0));
 + (UIImage*) tiledImageWithSize:(CGSize)size fromTile:(UIImage*)tile;
-+ (UIImage*) woodenBackgroundTileImage;
 
 @end

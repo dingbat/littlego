@@ -28,7 +28,8 @@
 #import "../../main/ApplicationDelegate.h"
 #import "../../shared/LayoutManager.h"
 #import "../../ui/AutoLayoutUtility.h"
-#import "../../utility/UIColorAdditions.h"
+#import "../../settings/BoardTheme.h"
+#import "../model/BoardViewModel.h"
 
 
 // -----------------------------------------------------------------------------
@@ -153,9 +154,11 @@
 - (void) configureViews
 {
   BoardViewMetrics* metrics = [ApplicationDelegate sharedDelegate].boardViewMetrics;
-
-  if ([LayoutManager sharedManager].uiType == UITypePhonePortraitOnly)
-    self.view.backgroundColor = [UIColor woodenBackgroundColor];
+  
+  if ([LayoutManager sharedManager].uiType == UITypePhonePortraitOnly) {
+    NSString* boardThemeId = [ApplicationDelegate sharedDelegate].boardViewModel.boardThemeId;
+    self.view.backgroundColor = [BoardTheme themeForId:boardThemeId].boardBackgroundColor;
+  }
 
   self.boardView.backgroundColor = [UIColor clearColor];
   self.boardView.delegate = self;

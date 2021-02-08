@@ -437,34 +437,4 @@
   return [UIColor colorWithRed:247.0/255.0 green:247.0/255.0 blue:247.0/255.0 alpha:1.0];
 }
 
-// -----------------------------------------------------------------------------
-/// @brief Returns a color object that can be used to display a wooden
-/// background. The UIColor object is actually an image sized so that it is
-/// guaranteed to cover the device's entire screen, regardless of which
-/// orientation the UI has.
-///
-/// @todo The implementation of this method uses the UIScreen bounds to
-/// determine the size of the image. For iPad multitasking scenarios this
-/// yields a grossly oversized image. Although not wrong, this wastes a lot of
-/// memory.
-// -----------------------------------------------------------------------------
-+ (UIColor*) woodenBackgroundColor
-{
-  // To make sure that the image covers the entire screen, regardless of which
-  // orientation the UI has, we must make the image square, using the larger
-  // dimension of the screen. This wastes some memory, but the alternative
-  // would be to recreate the image whenever the UI orientation changes.
-  CGRect mainScreenBounds = [UIScreen mainScreen].bounds;
-  CGFloat largerDimension = MAX(mainScreenBounds.size.width, mainScreenBounds.size.height);
-  CGSize mainScreenSquaredSize = CGSizeMake(largerDimension, largerDimension);
-
-  // The image on disk is quite large, intentionally, so that it's not very
-  // obvious that tiling takes place. On devices with smaller screens the image
-  // on disk may even be large enough to cover the entire screen without any
-  // tiling at all.
-  UIImage* image = [UIImage woodenBackgroundTileImage];
-  UIImage* tiledImage = [UIImage tiledImageWithSize:mainScreenSquaredSize fromTile:image];
-  return [UIColor colorWithPatternImage:tiledImage];
-}
-
 @end

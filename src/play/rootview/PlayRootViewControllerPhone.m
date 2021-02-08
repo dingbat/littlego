@@ -32,6 +32,9 @@
 #import "../../ui/SplitViewController.h"
 #import "../../utility/ExceptionUtility.h"
 #import "../../utility/UIColorAdditions.h"
+#import "../../main/ApplicationDelegate.h"
+#import "../model/BoardViewModel.h"
+#import "../../settings/BoardTheme.h"
 
 
 /// @brief Enumerates the states that the view hierarchy of
@@ -555,7 +558,8 @@ enum ViewHierarchyState
   // background image, only a simple gray background is visible. Obviously, a
   // nice rotation animation would be better, but also more difficult to
   // implement.
-  self.view.backgroundColor = [UIColor woodenBackgroundColor];
+  NSString* boardThemeId = [ApplicationDelegate sharedDelegate].boardViewModel.boardThemeId;
+  self.view.backgroundColor = [BoardTheme themeForId:boardThemeId].boardBackgroundColor;
 }
 
 #pragma mark - Auto Layout constraints setup and removal
@@ -666,7 +670,8 @@ enum ViewHierarchyState
 {
   if ([self hasPortraitOrientationViewHierarchy])
   {
-    self.woodenBackgroundView.backgroundColor = [UIColor woodenBackgroundColor];
+    NSString* boardThemeId = [ApplicationDelegate sharedDelegate].boardViewModel.boardThemeId;
+    self.woodenBackgroundView.backgroundColor = [BoardTheme themeForId:boardThemeId].boardBackgroundColor;
 
     [self.boardPositionButtonBoxController applyTransparentStyle];
 
