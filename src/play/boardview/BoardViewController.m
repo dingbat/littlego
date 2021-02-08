@@ -156,8 +156,10 @@
   BoardViewMetrics* metrics = [ApplicationDelegate sharedDelegate].boardViewMetrics;
   
   if ([LayoutManager sharedManager].uiType == UITypePhonePortraitOnly) {
-    NSString* boardThemeId = [ApplicationDelegate sharedDelegate].boardViewModel.boardThemeId;
-    self.view.backgroundColor = [BoardTheme themeForId:boardThemeId].boardBackgroundColor;
+    [[ApplicationDelegate sharedDelegate].boardViewModel addObserver:self
+                                                          forKeyPath:@"boardThemeId"
+                                                             options:(NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew)
+                                                             context:self.view];
   }
 
   self.boardView.backgroundColor = [UIColor clearColor];
@@ -556,7 +558,13 @@
 // -----------------------------------------------------------------------------
 - (void) observeValueForKeyPath:(NSString*)keyPath ofObject:(id)object change:(NSDictionary*)change context:(void*)context
 {
-  if (object == [ApplicationDelegate sharedDelegate].boardViewMetrics)
+  if (object == [ApplicationDelegate sharedDelegate].boardViewModel) {
+    if ([keyPath isEqual:@"boardThemeId"]) {
+      NSString* boardThemeId = [(BoardViewModel*)object boardThemeId];
+      ((UIView*)context).backgroundColor = [BoardTheme themeForId:boardThemeId].boardBackgroundColor;
+    }
+  }
+  else if (object == [ApplicationDelegate sharedDelegate].boardViewMetrics)
   {
     if ([keyPath isEqualToString:@"canvasSize"] ||
         [keyPath isEqualToString:@"boardSize"] ||

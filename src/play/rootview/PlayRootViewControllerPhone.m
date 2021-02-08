@@ -668,11 +668,13 @@ enum ViewHierarchyState
 // -----------------------------------------------------------------------------
 - (void) configureViews
 {
+  [[ApplicationDelegate sharedDelegate].boardViewModel addObserver:self
+                                                        forKeyPath:@"boardThemeId"
+                                                           options:(NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew)
+                                                           context:self.woodenBackgroundView];
+  
   if ([self hasPortraitOrientationViewHierarchy])
   {
-    NSString* boardThemeId = [ApplicationDelegate sharedDelegate].boardViewModel.boardThemeId;
-    self.woodenBackgroundView.backgroundColor = [BoardTheme themeForId:boardThemeId].boardBackgroundColor;
-
     [self.boardPositionButtonBoxController applyTransparentStyle];
 
     self.navigationBarController.navigationBar = self.navigationController.navigationBar;
@@ -680,6 +682,16 @@ enum ViewHierarchyState
   }
   else
   {
+  }
+}
+
+- (void) observeValueForKeyPath:(NSString*)keyPath ofObject:(id)object change:(NSDictionary*)change context:(void*)context
+{
+  if (object == [ApplicationDelegate sharedDelegate].boardViewModel) {
+    if ([keyPath isEqual:@"boardThemeId"]) {
+      NSString* boardThemeId = [(BoardViewModel*)object boardThemeId];
+      ((UIView*)context).backgroundColor = [BoardTheme themeForId:boardThemeId].boardBackgroundColor;
+    }
   }
 }
 
