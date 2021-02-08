@@ -86,7 +86,7 @@
   [dictionary setValue:[NSNumber numberWithBool:self.playSound] forKey:playSoundKey];
   [dictionary setValue:[NSNumber numberWithBool:self.vibrate] forKey:vibrateKey];
   [dictionary setValue:[NSNumber numberWithInt:self.infoTypeLastSelected] forKey:infoTypeLastSelectedKey];
-  [dictionary setValue:self.boardThemeId forKey:boardThemeIdKey];
+  [dictionary setObject:self.boardThemeId forKey:boardThemeIdKey];
   // Note: NSUserDefaults takes care entirely by itself of writing only changed
   // values.
   [userDefaults setObject:dictionary forKey:boardViewKey];

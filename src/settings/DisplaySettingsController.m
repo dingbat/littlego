@@ -198,7 +198,7 @@ enum DisplayPlayerInfluenceSectionItem
       BoardTheme* theme = [[BoardTheme boardThemes] objectAtIndex:indexPath.row];
       cell = [TableViewCellFactory cellWithType:DefaultCellType tableView:tableView];
       cell.textLabel.text = theme.name;
-      cell.accessoryType = theme.themeId == self.boardViewModel.boardThemeId ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
+      cell.accessoryType = [theme.themeId isEqual:self.boardViewModel.boardThemeId] ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
       break;
     }
     case ViewSection:
